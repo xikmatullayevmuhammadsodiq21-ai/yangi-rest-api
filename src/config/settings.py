@@ -20,7 +20,7 @@ SECRET_KEY = env("SECRET_KEY", default="django-insecure-dev-key")
 DEBUG = env("DEBUG", default=True)
 
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="*").split(",")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="*").split(",")['Apipractise.pythonanywhere.com']
 
 # Application definition
 
