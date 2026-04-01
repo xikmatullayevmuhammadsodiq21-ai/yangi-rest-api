@@ -132,8 +132,12 @@ if DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = [o.strip() for o in env("CORS_ALLOWED_ORIGINS").split(",")]
-CSRF_TRUSTED_ORIGINS = [o.strip() for o in env("CSRF_TRUSTED_ORIGINS").split(",")]
+CORS_ALLOWED_ORIGINS = [
+    o.strip() for o in env("CORS_ALLOWED_ORIGINS", default="").split(",") if o
+]
+CSRF_TRUSTED_ORIGINS = [
+    o.strip() for o in env("CSRF_TRUSTED_ORIGINS", default="").split(",") if o
+]
 
 if not DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
