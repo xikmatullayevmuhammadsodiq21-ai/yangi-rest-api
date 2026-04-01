@@ -14,13 +14,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-SECRET_KEY = env("SECRET_KEY", default="django-insecure-dev-key")
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG", default=True)
+DEBUG = bool(env("DEBUG"))
 
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="*").split(",")['Apipractise.pythonanywhere.com']
+ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(",")['Apipractise.pythonanywhere.com']
 
 # Application definition
 
@@ -132,12 +132,10 @@ if DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = [
-    o.strip() for o in env("CORS_ALLOWED_ORIGINS", default="").split(",") if o
-]
-CSRF_TRUSTED_ORIGINS = [
-    o.strip() for o in env("CSRF_TRUSTED_ORIGINS", default="").split(",") if o
-]
+CORS_ALLOWED_ORIGINS = [o.strip() for o in env("CORS_ALLOWED_ORIGINS").split(",")]
+
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in env("CSRF_TRUSTED_ORIGINS").split(",")]
+
 
 if not DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
